@@ -6,13 +6,8 @@
 }
 
 body {
-  /* font-family: "Painting With Chocolate"; */
   font-family: "caveat", cursive;
   corner-shape: bevel;
-}
-
-body > div {
-  box-shadow: inset 0 0 0 12px #b91c1c;
 }
 
 h1 {
