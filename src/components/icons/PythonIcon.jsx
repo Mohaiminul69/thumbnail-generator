@@ -1,6 +1,6 @@
 const PythonIcon = ({ className }) => {
   return (
-    <svg className={className} viewBox="0 0 128 128">
+    <svg className={className} viewBox="10 10 110 110">
       <linearGradient
         id="python-original-a"
         gradientUnits="userSpaceOnUse"

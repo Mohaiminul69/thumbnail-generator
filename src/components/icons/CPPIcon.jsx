@@ -1,4 +1,4 @@
-const CppIcon = ({ className }) => {
+const CPPIcon = ({ className }) => {
   return (
     <svg className={className} viewBox="0 0 128 128">
       <path
@@ -21,4 +21,4 @@ const CppIcon = ({ className }) => {
   );
 };
 
-export default CppIcon;
+export default CPPIcon;
