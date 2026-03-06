@@ -19,16 +19,16 @@ const ThumbnailTitle = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <h1
         onClick={() => setEditTextType("title")}
-        className="text-4xl whitespace-nowrap cursor-pointer"
+        className="text-5xl whitespace-nowrap cursor-pointer"
       >
         {texts.title}
       </h1>
       <p
         onClick={() => setEditTextType("subtitle")}
-        className="text-3xl cursor-pointer"
+        className="text-5xl font-bold cursor-pointer"
       >
         {texts.subtitle}
       </p>

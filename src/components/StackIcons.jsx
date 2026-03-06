@@ -14,7 +14,7 @@ const StackIcons = () => {
   };
 
   return (
-    <div className="flex items-end gap-7 text-white text-xl font-bold">
+    <div className="flex items-end gap-7 text-white text-2xl font-bold">
       {Object.entries(icons).map(([name, icon], idx) => (
         <div key={idx} className="flex flex-col items-center space-y-3">
           <div className="flex size-16 items-center justify-center">{icon}</div>

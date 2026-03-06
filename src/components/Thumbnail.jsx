@@ -3,7 +3,7 @@ import ImageUploader from "./ImageUploader";
 import ThumbnailTitle from "./ThumbnailTitle";
 
 const Thumbnail = () => (
-  <div className="bg-[#161616] relative aspect-video w-225 m-auto overflow-hidden shadow-[inset_0_0_0_12px_#9C2426]">
+  <div className="bg-[#161616] relative aspect-video w-225 overflow-hidden shadow-[inset_0_0_0_12px_#9C2426]">
     <div className="bg-[radial-gradient(circle_at_70%_55%,rgba(156,36,38,0.4)_20%,rgba(22,22,22,1)_85%)] border-8 border-[#9C2426] rounded-3xl p-8 flex justify-between items-center h-full">
       <div className="h-[75%] flex flex-col justify-between space-y-3 text-white overflow-visible z-10 shrink w-1/2">
         <ThumbnailTitle />

@@ -1,19 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Kaushan+Script&display=swap");
-
 @font-face {
   font-family: "Painting With Chocolate";
   src: url("/src/assets/fonts/Painting_With_Chocolate.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "caveat";
+  src: url("/src/assets/fonts/Caveat-VariableFont_wght.ttf") format("truetype");
+}
+
 body {
   font-family: "caveat", cursive;
-  corner-shape: bevel;
 }
 
 h1 {
   font-family: "Painting With Chocolate";
-}
-
-p {
-  font-family: "caveat", cursive;
 }
