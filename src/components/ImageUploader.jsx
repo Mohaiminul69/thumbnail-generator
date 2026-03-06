@@ -1,13 +1,36 @@
 import { useRef, useState } from "react";
+import { removeBackground } from "@imgly/background-removal";
 
 const ImageUploader = () => {
   const [image, setImage] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef(null);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
-    if (file) {
+    if (!file) return;
+
+    const shouldRemove = window.confirm(
+      "Would you like to remove the background?",
+    );
+
+    if (!shouldRemove) {
       setImage(URL.createObjectURL(file));
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      const blob = await removeBackground(file);
+      const resultUrl = URL.createObjectURL(blob);
+      setImage(resultUrl);
+    } catch (error) {
+      console.error("Background removal failed:", error);
+      // Fallback: just show the original image if AI fails
+      setImage(URL.createObjectURL(file));
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -16,19 +39,24 @@ const ImageUploader = () => {
       onClick={() => fileInputRef.current.click()}
       className="relative group cursor-pointer bg-[#9C2426] size-100 rounded-full shrink-0 shadow-[inset_0_0_0_10px_#9C2426,0_0_40px_rgba(185,28,28,0.6)] mt-10 overflow-hidden flex items-center justify-center"
     >
-      {image ? (
+      {isProcessing ? (
+        <div className="text-white text-center">
+          <p className="text-xs uppercase tracking-widest animate-bounce">
+            Removing Background...
+          </p>
+        </div>
+      ) : image ? (
         <img
           src={image}
-          alt="Uploaded content"
-          className="size-full object-cover"
+          alt="Result"
+          className="w-full h-full object-cover drop-shadow-2xl"
         />
       ) : (
-        <p className="text-white/50 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-          Click to upload image
-        </p>
+        <span className="text-white/40 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+          Click to upload photo
+        </span>
       )}
 
-      {/* Hidden Input */}
       <input
         type="file"
         ref={fileInputRef}
