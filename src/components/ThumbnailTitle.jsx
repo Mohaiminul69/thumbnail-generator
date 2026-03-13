@@ -1,12 +1,45 @@
 import { useEffect, useState } from "react";
+import fontSizeMap from "../utils/font-sizes";
 
-const Controls = () => {
+const Controls = ({ setTexts, textType }) => {
+  const handleFontSizeIncrease = () => {
+    setTexts((prev) => ({
+      ...prev,
+      [textType]: {
+        ...prev[textType],
+        fontSize: Math.min(7, prev[textType].fontSize + 1),
+      },
+    }));
+  };
+
+  const handleFontSizeDecrease = () => {
+    setTexts((prev) => ({
+      ...prev,
+      [textType]: {
+        ...prev[textType],
+        fontSize: Math.max(1, prev[textType].fontSize - 1),
+      },
+    }));
+  };
+
   return (
     <>
-      <div className="flex items-center justify-center absolute font-[caveat] -top-3.75 right-0 bg-[#9C2426] text-[24px] size-7 rounded-md shadow-[inset_0_0_0_2px_#9C2426,0_0_20px_rgba(156,36,38,0.6)]">
+      <div
+        onClick={(event) => {
+          event.stopPropagation();
+          handleFontSizeIncrease();
+        }}
+        className="flex items-center justify-center absolute font-[caveat] -top-3.75 right-0 bg-[#9C2426] text-[24px] size-7 rounded-md shadow-[inset_0_0_0_2px_#9C2426,0_0_20px_rgba(156,36,38,0.6)]"
+      >
         <span className="mb-1 mr-1">+</span>
       </div>
-      <div className="flex items-center justify-center absolute font-[caveat] top-7.5 right-0 bg-[#9C2426] text-[24px] size-7 rounded-md shadow-[inset_0_0_0_2px_#9C2426,0_0_20px_rgba(156,36,38,0.6)]">
+      <div
+        onClick={(event) => {
+          event.stopPropagation();
+          handleFontSizeDecrease();
+        }}
+        className="flex items-center justify-center absolute font-[caveat] top-7.5 right-0 bg-[#9C2426] text-[24px] size-7 rounded-md shadow-[inset_0_0_0_2px_#9C2426,0_0_20px_rgba(156,36,38,0.6)]"
+      >
         <span className="mb-1 mr-1">-</span>
       </div>
     </>
@@ -52,19 +85,23 @@ const ThumbnailTitle = () => {
         onMouseOver={() => setShowControlFor("title")}
         onMouseLeave={() => setShowControlFor(null)}
         onClick={() => setEditTextType("title")}
-        className={`text-${title.fontSize}xl cursor-pointer relative`}
+        className={`${fontSizeMap[title.fontSize]} cursor-pointer relative`}
       >
         {title.text}
-        {showControlFor == "title" && <Controls />}
+        {showControlFor == "title" && (
+          <Controls textType="title" setTexts={setTexts} />
+        )}
       </h1>
       <p
         onMouseOver={() => setShowControlFor("subtitle")}
         onMouseLeave={() => setShowControlFor(null)}
         onClick={() => setEditTextType("subtitle")}
-        className={`text-${subtitle.fontSize}xl font-bold cursor-pointer relative`}
+        className={`${fontSizeMap[subtitle.fontSize]} font-bold cursor-pointer relative`}
       >
         {subtitle.text}
-        {showControlFor == "subtitle" && <Controls />}
+        {showControlFor == "subtitle" && (
+          <Controls textType="subtitle" setTexts={setTexts} />
+        )}
       </p>
       {editTextType && (
         <div className="space-y-1">
