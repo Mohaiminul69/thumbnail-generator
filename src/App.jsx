@@ -1,4 +1,4 @@
-import Thumbnail from "./components/thumbnail";
+import Thumbnail from "./components/Thumbnail";
 import { useRef, useCallback, useState } from "react";
 import { toJpeg } from "html-to-image";
 import ColorControls from "./components/ColorControls";
