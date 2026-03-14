@@ -11,7 +11,7 @@ const ThumbnailTitle = () => {
       ? JSON.parse(saved)
       : {
           title: { text: "Click here to add title", fontSize: 5 },
-          subtitle: { text: "Leetcode problem #36", fontSize: 4 },
+          subtitle: { text: "Click here to add subtitle", fontSize: 4 },
         };
   });
 
