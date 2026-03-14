@@ -68,7 +68,7 @@ const ThumbnailTitle = () => {
             onChange={updateText}
             onKeyDown={handleKeyDown}
             defaultValue={texts[editTextType].text}
-            className="w-full bg-[#0f0f0f] text-white text-lg px-4 py-2 rounded-lg border border-[#9C2426] outline-none focus:ring-2 focus:ring-[#9C2426] placeholder-gray-400"
+            className="w-full bg-[#0f0f0f] text-white text-lg px-4 py-2 rounded-lg border border-(--primary) outline-none focus:ring-2 focus:ring-(--primary) placeholder-gray-400"
           />
           <p className="text-gray-500 text-sm italic">Press Enter to save</p>
         </div>

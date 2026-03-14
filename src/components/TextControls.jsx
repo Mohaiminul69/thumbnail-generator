@@ -26,7 +26,11 @@ const TextControls = ({ setTexts, textType }) => {
           event.stopPropagation();
           handleFontSizeIncrease();
         }}
-        className="flex items-center justify-center absolute font-[caveat] -top-3.75 right-0 bg-[#9C2426] text-[24px] size-7 rounded-md shadow-[inset_0_0_0_2px_#9C2426,0_0_20px_rgba(156,36,38,0.6)]"
+        style={{
+          backgroundColor: "var(--primary)",
+          boxShadow: `inset 0 0 0 10px var(--primary), 0 0 40px rgba(var(--primary-rgb), 0.6)`,
+        }}
+        className="flex items-center justify-center absolute font-[caveat] -top-3.75 right-0 text-[24px] size-7 rounded-md"
       >
         <span className="mb-1 mr-1">+</span>
       </div>
@@ -35,7 +39,11 @@ const TextControls = ({ setTexts, textType }) => {
           event.stopPropagation();
           handleFontSizeDecrease();
         }}
-        className="flex items-center justify-center absolute font-[caveat] top-7.5 right-0 bg-[#9C2426] text-[24px] size-7 rounded-md shadow-[inset_0_0_0_2px_#9C2426,0_0_20px_rgba(156,36,38,0.6)]"
+        style={{
+          backgroundColor: "var(--primary)",
+          boxShadow: `inset 0 0 0 10px var(--primary), 0 0 40px rgba(var(--primary-rgb), 0.6)`,
+        }}
+        className="flex items-center justify-center absolute font-[caveat] top-7.5 right-0 text-[24px] size-7 rounded-md"
       >
         <span className="mb-1 mr-1">-</span>
       </div>

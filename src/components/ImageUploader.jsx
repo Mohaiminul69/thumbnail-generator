@@ -37,7 +37,11 @@ const ImageUploader = () => {
   return (
     <div
       onClick={() => fileInputRef.current.click()}
-      className="relative group cursor-pointer bg-[#9C2426] size-100 rounded-full shrink-0 shadow-[inset_0_0_0_10px_#9C2426,0_0_40px_rgba(185,28,28,0.6)] mt-10 overflow-hidden flex items-center justify-center"
+      style={{
+        backgroundColor: "var(--primary)",
+        boxShadow: `inset 0 0 0 10px var(--primary), 0 0 40px rgba(var(--primary-rgb), 0.6)`,
+      }}
+      className="relative group cursor-pointer size-100 rounded-full shrink-0 mt-10 overflow-hidden flex items-center justify-center"
     >
       {isProcessing ? (
         <div className="text-white text-center">
