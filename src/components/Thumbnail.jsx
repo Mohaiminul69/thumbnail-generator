@@ -21,7 +21,7 @@ const Thumbnail = ({ rgba }) => {
             borderColor: "var(--primary)",
             background: `radial-gradient(circle at 70% 55%, rgba(var(--primary-rgb), 0.4) 20%, rgba(22,22,22,1) 85%)`,
           }}
-          className="bg-[radial-gradient(circle_at_70%_55%,rgba(156,36,38,0.4)_20%,rgba(22,22,22,1)_85%)] border-10 rounded-3xl p-8 flex justify-between items-center h-full"
+          className="bg-[radial-gradient(circle_at_70%_55%,rgba(156,36,38,0.4)_20%,rgba(22,22,22,1)_85%)] border-10 rounded-[40px] p-8 flex justify-between items-center h-full"
         >
           <div className="h-[75%] flex flex-col justify-between space-y-3 text-white overflow-visible z-10 shrink w-1/2">
             <ThumbnailTitle />
