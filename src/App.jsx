@@ -11,6 +11,7 @@ const App = () => {
   // Initial color: #9C2426 (R:156, G:36, B:38)
   const [rgba, setRgba] = useState({ r: 156, g: 36, b: 38, a: 1 });
   const [image, setImage] = useState(null);
+  const [isFetching, setIsFetching] = useState(false);
   const [colorSuggestions, setColorSuggestions] = useState(suggestions);
   const thumbnailRef = useRef(null);
   const fullColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, 1)`;
@@ -37,6 +38,7 @@ const App = () => {
 
   const handleGetColorSuggestions = async () => {
     if (!image) return;
+    setIsFetching(true);
 
     try {
       const colors = await getAIColorSuggestions(image);
@@ -45,6 +47,7 @@ const App = () => {
       console.error("AI Error:", error);
     } finally {
       console.log(colorSuggestions, "Color suggestions process completed.");
+      setIsFetching(false);
     }
   };
 
@@ -70,15 +73,16 @@ const App = () => {
             "--primary-hover": hoverColor,
           }}
           onClick={handleGetColorSuggestions}
-          className="bg-(--primary) hover:bg-(--primary-hover) cursor-pointer text-white font-bold py-2 px-4 rounded shadow-lg transition duration-150 ease-in-out"
+          className={`${isFetching && "animate-pulse"} bg-(--primary) hover:bg-(--primary-hover) cursor-pointer text-white font-bold py-2 px-4 rounded shadow-lg transition duration-150 ease-in-out`}
         >
-          Get AI Color Suggestions
+          {isFetching ? "Analyzing..." : "Get AI Color Suggestions"}
         </button>
         <ColorControls rgba={rgba} setRgba={setRgba} />
         <ColorSuggestions
           colorSuggestions={colorSuggestions}
           rgba={rgba}
           setRgba={setRgba}
+          isFetching={isFetching}
         />
       </div>
     </div>
