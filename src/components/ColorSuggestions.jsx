@@ -31,7 +31,7 @@ const ColorSuggestions = ({ colorSuggestions, rgba, setRgba, isFetching }) => {
           >
             <span>{name}</span>
           </button>
-          <span>rgb - {rgb.join(", ")}</span>
+          <span>rgb - {Array.isArray(rgb) ? rgb.join(", ") : rgb}</span>
           <span>hex - {hex}</span>
         </div>
       ))}

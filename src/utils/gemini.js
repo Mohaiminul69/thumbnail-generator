@@ -34,14 +34,25 @@ export const getAIColorSuggestions = async (imageFile) => {
 
   // THE SYSTEM PROMPT: This is how you get my specific logic
   const prompt = `
-    Act as a professional color theorist and portrait photographer.
-    Analyze the user's uploaded image.
-    Identify the dominant colors of their clothing, skin tone, and accessories.
-    Suggest 5-6 background colors categorized by 'Professional', 'Vibrant/Pop', and 'Minimalist'.
-    
-    Return ONLY a JSON array of objects with these keys: 
-    "name", "category", "rgb", "hex".
-  `;
+  SYSTEM INSTRUCTION:
+  You are a high-end Digital Color Grade specialist. 
+  
+  TASK:
+  1. Extract the specific HEX codes of the subject's shirt, skin undertone, and hair/accessories.
+  2. Use these extracted colors to calculate mathematically complementary and analogous background shades.
+  3. STRICT RULE: Do not provide the same generic colors (like standard Grey #808080 or Navy #000080) for every image. 
+  4. Every suggestion MUST be uniquely tuned to the specific saturation and vibrance of the uploaded image's clothing.
+
+  OUTPUT:
+  Return ONLY a JSON array of 6 objects. 
+  Each object must have: "name", "category", "rgb", "hex".
+
+  Categories to include: 'Professional', 'Vibrant/Pop', and 'Minimalist'.
+
+  IMPORTANT: 
+  The "rgb" value MUST be an array of three numbers, e.g., [255, 0, 0].
+  The "hex" value MUST be a string, e.g., "#FF0000".
+`;
 
   const imagePart = await fileToGenerativePart(imageFile);
   const result = await model.generateContent([prompt, imagePart]);
