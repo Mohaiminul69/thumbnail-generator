@@ -15,7 +15,7 @@ const ColorSuggestions = ({ colorSuggestions, rgba, setRgba }) => {
         "--primary": fullColor,
         backgroundColor: "var(--primary)",
       }}
-      className="max-h-113.75 scrollbar-styles overflow-y-scroll flex max-w-fit flex-col gap-3.5 p-6 rounded-md text-white text-sm border border-white/10"
+      className="max-h-113.75 scrollbar-styles overflow-y-scroll flex flex-col gap-3.5 p-6 rounded-md text-white text-sm border border-white/10"
     >
       <p>Color Suggestions</p>
       {colorSuggestions.map((color) => (
