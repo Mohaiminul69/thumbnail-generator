@@ -2,7 +2,7 @@ import StackIcons from "./StackIcons";
 import ImageUploader from "./ImageUploader";
 import ThumbnailTitle from "./ThumbnailTitle";
 
-const Thumbnail = ({ rgba }) => {
+const Thumbnail = ({ rgba, image, setImage }) => {
   const fullColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
   const rgbOnly = `${rgba.r}, ${rgba.g}, ${rgba.b}`;
 
@@ -27,7 +27,7 @@ const Thumbnail = ({ rgba }) => {
             <ThumbnailTitle />
             <StackIcons />
           </div>
-          <ImageUploader />
+          <ImageUploader image={image} setImage={setImage} />
           <div
             style={{
               backgroundColor: "var(--primary)",

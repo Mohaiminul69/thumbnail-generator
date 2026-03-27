@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
 import { removeBackground } from "@imgly/background-removal";
 
-const ImageUploader = () => {
-  const [image, setImage] = useState(null);
+const ImageUploader = ({image, setImage}) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef(null);
 
